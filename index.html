@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELY PERFUME | Luxury Fragrance Boutique</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Luxury Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cinzel & Inter for Luxury Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB',
+                            dark: '#AA7C11',
+                            metallic: '#E5C158'
+                        },
+                        darkBg: '#0A0A0A',
+                        cardBg: '#141414',
+                        charcoal: '#1A1A1A',
+                        borderGold: '#2A2412'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2.5s infinite',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #E5E5E5;
+            font-family: 'Inter', sans-serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+        }
+        .gold-border {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .gold-border:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+        /* Custom scrollbar for luxury feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2412;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-gold selection:text-black">
+
+    <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <header class="sticky top-0 z-40 bg-darkBg/95 backdrop-blur-md border-b border-borderGold transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gold hover:text-gold-light p-2 transition">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Brand Logo & Name -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="router.navigate('home')">
+                <div class="w-12 h-12 rounded-full overflow-hidden border border-gold shadow-[0_0_15px_rgba(212,175,55,0.3)] bg-black flex items-center justify-center">
+                    <img src="image_8f9196.png" alt="ELY PERFUME Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/000000/D4AF37?text=ELY'">
+                </div>
+                <div>
+                    <span class="font-cinzel font-bold text-xl tracking-widest gold-gradient-text">ELY PERFUME</span>
+                    <span class="block text-[10px] tracking-[0.2em] text-gold/70 uppercase">Beirut • +961 81 099 418</span>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-cinzel text-sm tracking-widest">
+                <button onclick="router.navigate('home')" class="nav-link text-gray-300 hover:text-gold transition py-2 border-b-2 border-transparent data-[active=true]:border-gold data-[active=true]:text-gold" data-page="home">Home</button>
+                <button onclick="router.navigate('shop')" class="nav-link text-gray-300 hover:text-gold transition py-2 border-b-2 border-transparent data-[active=true]:border-gold data-[active=true]:text-gold" data-page="shop">Collection</button>
+                <button onclick="router.navigate('about')" class="nav-link text-gray-300 hover:text-gold transition py-2 border-b-2 border-transparent data-[active=true]:border-gold data-[active=true]:text-gold" data-page="about">About Us</button>
+                <button onclick="router.navigate('contact')" class="nav-link text-gray-300 hover:text-gold transition py-2 border-b-2 border-transparent data-[active=true]:border-gold data-[active=true]:text-gold" data-page="contact">Contact</button>
+            </nav>
+
+            <!-- Header Right Actions -->
+            <div class="flex items-center gap-4">
+                <!-- Search Trigger -->
+                <button onclick="router.navigate('shop')" class="text-gold hover:text-gold-light p-2 transition relative" title="Search Collection">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </button>
+
+                <!-- Shopping Cart Button -->
+                <button onclick="router.navigate('cart')" class="relative text-gold hover:text-gold-light p-2 transition" title="Shopping Cart">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-gold text-black font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center shadow-md hidden">0</span>
+                </button>
+
+                <!-- Admin Access Button -->
+                <button onclick="router.navigate('admin')" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/40 text-xs font-cinzel tracking-wider text-gold hover:bg-gold/10 transition">
+                    <i class="fa-solid fa-lock text-[10px]"></i> Admin
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-cardBg border-b border-borderGold px-6 py-4 space-y-3 font-cinzel text-sm">
+            <button onclick="router.navigate('home'); toggleMobileMenu()" class="block w-full text-left py-2 text-gray-200 hover:text-gold">Home</button>
+            <button onclick="router.navigate('shop'); toggleMobileMenu()" class="block w-full text-left py-2 text-gray-200 hover:text-gold">Collection</button>
+            <button onclick="router.navigate('about'); toggleMobileMenu()" class="block w-full text-left py-2 text-gray-200 hover:text-gold">About Us</button>
+            <button onclick="router.navigate('contact'); toggleMobileMenu()" class="block w-full text-left py-2 text-gray-200 hover:text-gold">Contact</button>
+            <button onclick="router.navigate('admin'); toggleMobileMenu()" class="block w-full text-left py-2 text-gold font-semibold"><i class="fa-solid fa-lock mr-2"></i> Admin Dashboard</button>
+        </div>
+    </header>
+
+    <main id="app-view" class="flex-grow">
+        <!-- Views will be dynamically injected here -->
+    </main>
+
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+        <div id="whatsapp-tooltip" class="bg-cardBg border border-gold text-xs text-gold py-1.5 px-3 rounded-lg shadow-xl hidden animate-bounce">
+            Chat with Ely Perfume on WhatsApp!
+        </div>
+        <a href="https://wa.me/96181099418?text=Hello%20Ely%20Perfume,%20I%20would%20like%20to%20inquire%20about%20your%20luxury%20fragrances." target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-gradient-to-tr from-green-600 to-emerald-500 text-white rounded-full flex items-center justify-center text-2xl shadow-[0_4px_20px_rgba(16,185,129,0.5)] hover:scale-110 transition duration-300 group">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <footer class="bg-cardBg border-t border-borderGold text-gray-400 py-12 px-4 sm:px-6 lg:px-8 mt-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+            <!-- Col 1: Brand -->
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border border-gold bg-black flex items-center justify-center">
+                        <img src="image_8f9196.png" alt="ELY PERFUME Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/000000/D4AF37?text=ELY'">
+                    </div>
+                    <span class="font-cinzel font-bold text-lg gold-gradient-text tracking-widest">ELY PERFUME</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Exquisite luxury fragrances crafted for the discerning connoisseur. Experience pure elegance and timeless signature scents.
+                </p>
+                <div class="text-xs text-gold font-cinzel">
+                    <i class="fa-solid fa-phone mr-2"></i> +961 81 099 418
+                </div>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div class="space-y-3 font-cinzel text-sm">
+                <h4 class="text-gold font-semibold tracking-wider uppercase text-xs">Boutique</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><button onclick="router.navigate('home')" class="hover:text-gold transition">Home</button></li>
+                    <li><button onclick="router.navigate('shop')" class="hover:text-gold transition">Full Collection</button></li>
+                    <li><button onclick="router.navigate('about')" class="hover:text-gold transition">About Our House</button></li>
+                    <li><button onclick="router.navigate('contact')" class="hover:text-gold transition">Contact & Boutique</button></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Customer Service -->
+            <div class="space-y-3 font-cinzel text-sm">
+                <h4 class="text-gold font-semibold tracking-wider uppercase text-xs">Client Care</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><button onclick="router.navigate('cart')" class="hover:text-gold transition">Shopping Bag</button></li>
+                    <li><a href="https://wa.me/96181099418?text=Hello%20Ely%20Perfume,%20I%20need%20assistance%20with%20delivery." target="_blank" class="hover:text-gold transition">Delivery Information</a></li>
+                    <li><a href="https://wa.me/96181099418?text=Hello%20Ely%20Perfume,%20I%20have%20a%20question%20about%20orders." target="_blank" class="hover:text-gold transition">WhatsApp Orders</a></li>
+                    <li><button onclick="router.navigate('admin')" class="hover:text-gold/80 transition text-gold/50"><i class="fa-solid fa-lock text-[9px] mr-1"></i> Admin Portal</button></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Newsletter / Notice -->
+            <div class="space-y-3">
+                <h4 class="text-gold font-cinzel font-semibold tracking-wider uppercase text-xs">Exclusive Access</h4>
+                <p class="text-xs text-gray-400">Join our inner circle for new fragrance releases and private invitations.</p>
+                <div class="flex gap-2">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email" class="bg-black border border-gold/40 rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-gold flex-grow">
+                    <button onclick="subscribeNewsletter()" class="bg-gold text-black font-cinzel text-xs font-bold px-4 py-2 rounded hover:bg-gold-light transition">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-borderGold pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 font-cinzel">
+            <p>&copy; 2026 ELY PERFUME. All Rights Reserved. Crafted with Luxury.</p>
+            <p class="mt-2 sm:mt-0 text-gold/80">WhatsApp Orders: +961 81 099 418</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- CENTRAL APP STATE & STORAGE ---
+        const DEFAULT_SETTINGS = {
+            storeName: "ELY PERFUME",
+            whatsappNumber: "+961 81 099 418",
+            currency: "USD",
+            deliveryFee: 5.00,
+            deliveryAreas: "Beirut, Mount Lebanon, Tripoli, Saida, Bekaa, All Lebanese Regions",
+            aboutText: "ELY PERFUME stands as a pinnacle of olfactory luxury in Beirut, Lebanon. We curate and craft rare, mesmerizing fragrances that leave an unforgettable impression. Each bottle is an exquisite work of art, designed for those who command presence and elegance.",
+            contactInfo: "Visit our boutique or connect with our fragrance consultants directly via WhatsApp for personalized recommendations.",
+            storePolicies: "Orders are confirmed upon direct verification via WhatsApp. Delivery takes 1-3 business days across Lebanon."
+        };
+
+        // Initialize LocalStorage Data if not present
+        function initStorage() {
+            if (!localStorage.getItem('ely_settings')) {
+                localStorage.setItem('ely_settings', JSON.stringify(DEFAULT_SETTINGS));
+            }
+            if (!localStorage.getItem('ely_products')) {
+                // Starts completely empty as requested!
+                localStorage.setItem('ely_products', JSON.stringify([]));
+            }
+            if (!localStorage.getItem('ely_categories')) {
+                localStorage.setItem('ely_categories', JSON.stringify(['Eau de Parfum', 'Extrait de Parfum', 'Oud & Amber', 'Floral Luxury', 'Fresh Aquatic', 'Oriental Spice']));
+            }
+            if (!localStorage.getItem('ely_cart')) {
+                localStorage.setItem('ely_cart', JSON.stringify([]));
+            }
+            if (!localStorage.getItem('ely_orders')) {
+                localStorage.setItem('ely_orders', JSON.stringify([]));
+            }
+        }
+        initStorage();
+
+        // Data Access Helpers
+        const StoreAPI = {
+            getSettings: () => JSON.parse(localStorage.getItem('ely_settings')),
+            saveSettings: (settings) => { localStorage.setItem('ely_settings', JSON.stringify(settings)); },
+            getProducts: () => JSON.parse(localStorage.getItem('ely_products')),
+            saveProducts: (products) => { localStorage.setItem('ely_products', JSON.stringify(products)); },
+            getCategories: () => JSON.parse(localStorage.getItem('ely_categories')),
+            saveCategories: (categories) => { localStorage.setItem('ely_categories', JSON.stringify(categories)); },
+            getCart: () => JSON.parse(localStorage.getItem('ely_cart')),
+            saveCart: (cart) => { 
+                localStorage.setItem('ely_cart', JSON.stringify(cart)); 
+                updateCartBadge();
+            },
+            getOrders: () => JSON.parse(localStorage.getItem('ely_orders')),
+            saveOrders: (orders) => { localStorage.setItem('ely_orders', JSON.stringify(orders)); },
+        };
+
+        // --- TOAST NOTIFICATION ---
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgClass = type === 'success' ? 'bg-cardBg border-gold text-gold' : 'bg-red-950 border-red-500 text-red-200';
+            const icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+            
+            toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-lg border ${bgClass} shadow-2xl transition-all duration-300 transform translate-x-10 opacity-0 font-cinzel text-xs tracking-wider`;
+            toast.innerHTML = `<i class="fa-solid ${icon} text-base"></i><span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.remove('translate-x-10', 'opacity-0');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.add('translate-x-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        // --- CART BADGE UPDATER ---
+        function updateCartBadge() {
+            const cart = StoreAPI.getCart();
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.getElementById('cart-badge');
+            if (totalCount > 0) {
+                badge.innerText = totalCount;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        // --- MOBILE MENU TOGGLE ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // --- ROUTER SYSTEM ---
+        const router = {
+            currentRoute: 'home',
+            params: {},
+            navigate: function(route, params = {}) {
+                this.currentRoute = route;
+                this.params = params;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.render();
+                
+                // Update navigation active states
+                document.querySelectorAll('.nav-link').forEach(btn => {
+                    if (btn.getAttribute('data-page') === route) {
+                        btn.setAttribute('data-active', 'true');
+                    } else {
+                        btn.removeAttribute('data-active');
+                    }
+                });
+
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            },
+            render: function() {
+                const container = document.getElementById('app-view');
+                switch(this.currentRoute) {
+                    case 'home':
+                        container.innerHTML = renderHomePage();
+                        initHomeEvents();
+                        break;
+                    case 'shop':
+                        container.innerHTML = renderShopPage();
+                        initShopEvents();
+                        break;
+                    case 'product-detail':
+                        container.innerHTML = renderProductDetailPage(this.params.id);
+                        initProductDetailEvents();
+                        break;
+                    case 'cart':
+                        container.innerHTML = renderCartPage();
+                        initCartEvents();
+                        break;
+                    case 'checkout':
+                        container.innerHTML = renderCheckoutPage();
+                        initCheckoutEvents();
+                        break;
+                    case 'about':
+                        container.innerHTML = renderAboutPage();
+                        break;
+                    case 'contact':
+                        container.innerHTML = renderContactPage();
+                        initContactEvents();
+                        break;
+                    case 'admin':
+                        container.innerHTML = renderAdminPage();
+                        initAdminEvents();
+                        break;
+                    default:
+                        container.innerHTML = renderHomePage();
+                        initHomeEvents();
+                }
+            }
+        };
+
+        // --- STREAMING_CHUNK:Rendering Home View ---
+        function renderHomePage() {
+            const products = StoreAPI.getProducts();
+            const categories = StoreAPI.getCategories();
+            const settings = StoreAPI.getSettings();
+            
+            const featuredProducts = products.filter(p => p.isFeatured && p.isPublished && p.stock > 0);
+
+            return `
+                <div class="space-y-20 pb-20">
+                    <!-- Hero Section -->
+                    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-cardBg to-black border-b border-borderGold px-4">
+                        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px]"></div>
+                        <div class="max-w-5xl mx-auto text-center relative z-10 space-y-8 py-16">
+                            
+                            <!-- Majestic Logo Emblem -->
+                            <div class="w-40 h-40 mx-auto rounded-full p-1.5 bg-gradient-to-tr from-gold-dark via-gold to-gold-light shadow-[0_0_50px_rgba(212,175,55,0.4)] animate-pulse-slow">
+                                <div class="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
+                                    <img src="image_8f9196.png" alt="ELY PERFUME" class="w-full h-full object-cover scale-110 hover:scale-125 transition duration-700" onerror="this.src='https://placehold.co/200x200/000000/D4AF37?text=ELY'">
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <span class="text-xs uppercase tracking-[0.3em] text-gold font-cinzel font-semibold">Haute Parfumerie • Beirut</span>
+                                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-cinzel font-bold tracking-wider gold-gradient-text">
+                                    ELY PERFUME
+                                </h1>
+                                <p class="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base font-light leading-relaxed">
+                                    ${settings.aboutText}
+                                </p>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                                <button onclick="router.navigate('shop')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-black font-cinzel font-bold text-sm tracking-widest rounded shadow-[0_4px_20px_rgba(212,175,55,0.4)] hover:scale-105 transition duration-300">
+                                    EXPLORE COLLECTION <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </button>
+                                <a href="https://wa.me/96181099418?text=Hello%20Ely%20Perfume,%20I%20would%20like%20expert%20fragrance%20recommendations." target="_blank" class="w-full sm:w-auto px-8 py-4 border border-gold text-gold font-cinzel font-bold text-sm tracking-widest rounded hover:bg-gold/10 transition duration-300">
+                                    WHATSAPP CONSULT <i class="fa-brands fa-whatsapp ml-2"></i>
+                                </a>
+                            </div>
+
+                            <div class="pt-6 flex items-center justify-center gap-8 text-xs text-gold font-cinzel tracking-widest">
+                                <div><i class="fa-solid fa-circle-check text-gold mr-1"></i> 100% Authentic</div>
+                                <div><i class="fa-solid fa-truck-fast text-gold mr-1"></i> Express Lebanon Delivery</div>
+                                <div><i class="fa-solid fa-shield-halved text-gold mr-1"></i> Direct WhatsApp Order</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Popular Categories -->
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center space-y-2 mb-12">
+                            <span class="text-xs uppercase tracking-[0.2em] text-gold font-cinzel">Curated Essences</span>
+                            <h2 class="text-3xl font-cinzel font-bold tracking-wider text-white">Fragrance Categories</h2>
+                            <div class="w-16 h-0.5 bg-gold mx-auto mt-2"></div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                            ${categories.map(cat => `
+                                <div onclick="router.navigate('shop'); setTimeout(() => { filterByCategory('${cat}'); }, 100);" class="group cursor-pointer bg-cardBg border border-borderGold hover:border-gold p-6 rounded-lg text-center transition duration-300 flex flex-col items-center justify-center gap-3">
+                                    <div class="w-12 h-12 rounded-full bg-black border border-gold/40 flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-black transition duration-300">
+                                        <i class="fa-solid fa-spray-can-sparkles text-lg"></i>
+                                    </div>
+                                    <span class="font-cinzel text-xs font-semibold text-gray-200 group-hover:text-gold transition">${cat}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+
+                    <!-- Featured Products -->
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12 border-b border-borderGold pb-4">
+                            <div>
+                                <span class="text-xs uppercase tracking-[0.2em] text-gold font-cinzel">Masterpieces</span>
+                                <h2 class="text-3xl font-cinzel font-bold tracking-wider text-white mt-1">Featured Fragrances</h2>
+                            </div>
+                            <button onclick="router.navigate('shop')" class="text-xs font-cinzel text-gold hover:text-gold-light mt-2 sm:mt-0 tracking-widest flex items-center gap-1">
+                                View Full Collection <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        ${featuredProducts.length === 0 ? `
+                            <div class="bg-cardBg border border-borderGold rounded-xl p-12 text-center space-y-4">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-black border border-gold/30 flex items-center justify-center text-gold text-2xl">
+                                    <i class="fa-solid fa-gem"></i>
+                                </div>
+                                <h3 class="font-cinzel text-xl text-white font-semibold">No Featured Fragrances Yet</h3>
+                                <p class="text-gray-400 text-sm max-w-md mx-auto">
+                                    The store administrator is curating elite selections. Explore all available fragrances in the catalog or add products via the Admin Portal.
+                                </p>
+                                <button onclick="router.navigate('shop')" class="px-6 py-2.5 bg-gold text-black font-cinzel font-bold text-xs tracking-wider rounded hover:bg-gold-light transition">
+                                    Browse Shop Catalog
+                                </button>
+                            </div>
+                        ` : `
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                ${featuredProducts.map(p => renderProductCard(p)).join('')}
+                            </div>
+                        `}
+                    </section>
+
+                    <!-- Luxury Banner Callout -->
+                    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="bg-gradient-to-r from-cardBg via-black to-cardBg border border-gold/40 rounded-2xl p-8 sm:p-12 relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-8">
+                            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                            <div class="space-y-3 relative z-10 max-w-xl">
+                                <span class="text-xs font-cinzel text-gold tracking-[0.2em] uppercase">Bespoke Experience</span>
+                                <h3 class="text-2xl sm:text-3xl font-cinzel font-bold text-white">Need Personal Fragrance Guidance?</h3>
+                                <p class="text-gray-300 text-sm">
+                                    Our master perfumers in Beirut are ready to help you discover your signature note. Message us on WhatsApp anytime at +961 81 099 418.
+                                </p>
+                            </div>
+                            <div class="relative z-10 flex-shrink-0">
+                                <a href="https://wa.me/96181099418?text=Hello%20Ely%20Perfume,%20I%20need%20personalized%20perfume%20advice." target="_blank" class="px-8 py-4 bg-gold text-black font-cinzel font-bold text-xs tracking-widest rounded-lg shadow-lg hover:bg-gold-light transition duration-300 inline-flex items-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> CHAT ON WHATSAPP
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function initHomeEvents() {
+            // Home specific event bindings if needed
+        }
+
+        // --- STREAMING_CHUNK:Product Card HTML Generator ---
+        function renderProductCard(p) {
+            const hasDiscount = p.discountPrice && p.discountPrice < p.price;
+            const displayPrice = hasDiscount ? p.discountPrice : p.price;
+            const discountPercent = hasDiscount ? Math.round(((p.price - p.discountPrice) / p.price) * 100) : 0;
+
+            return `
+                <div class="group bg-cardBg border border-borderGold hover:border-gold rounded-xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Product Image & Badges -->
+                        <div class="relative h-72 bg-black overflow-hidden cursor-pointer" onclick="router.navigate('product-detail', { id: '${p.id}' })">
+                            <img src="${p.imageUrl}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" onerror="this.src='https://placehold.co/400x400/141414/D4AF37?text=ELY+PERFUME'">
+                            
+                            <!-- Badges -->
+                            <div class="absolute top-3 left-3 flex flex-col gap-1">
+                                ${p.isFeatured ? '<span class="bg-gold text-black text-[10px] font-cinzel font-bold px-2.5 py-0.5 rounded shadow">FEATURED</span>' : ''}
+                                ${hasDiscount ? `<span class="bg-red-600 text-white text-[10px] font-cinzel font-bold px-2.5 py-0.5 rounded shadow">-${discountPercent}%</span>` : ''}
+                            </div>
+
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-black/80 backdrop-blur-sm text-gold border border-gold/40 text-[10px] font-cinzel px-2.5 py-1 rounded-full">
+                                    ${p.size}ml
+                                </span>
+                            </div>
+
+                            <!-- Quick view overlay -->
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                                <span class="px-4 py-2 bg-gold text-black font-cinzel font-bold text-xs rounded shadow-lg transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                                    VIEW DETAILS
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Product Info -->
+                        <div class="p-5 space-y-2">
+                            <div class="flex items-center justify-between text-xs text-gold/80 font-cinzel">
+                                <span class="uppercase tracking-wider">${p.brand}</span>
+                                <span class="text-gray-400">${p.category}</span>
+                            </div>
+
+                            <h3 onclick="router.navigate('product-detail', { id: '${p.id}' })" class="font-cinzel font-bold text-white text-base hover:text-gold cursor-pointer transition truncate">
+                                ${p.name}
+                            </h3>
+
+                            <p class="text-xs text-gray-400 line-clamp-2">
+                                ${p.description}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Price & Cart Actions -->
+                    <div class="p-5 pt-0 flex items-center justify-between border-t border-borderGold/50 mt-3 pt-3">
+                        <div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-lg font-bold font-cinzel text-gold">$${displayPrice.toFixed(2)}</span>
+                                ${hasDiscount ? `<span class="text-xs text-gray-500 line-through">$${p.price.toFixed(2)}</span>` : ''}
+                            </div>
+                            <span class="text-[10px] ${p.stock > 0 ? 'text-emerald-400' : 'text-red-400'} font-cinzel">
+                                ${p.stock > 0 ? `${p.stock} in stock` : 'Out of stock'}
+                            </span>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <button onclick="addToCart('${p.id}')" ${p.stock <= 0 ? 'disabled' : ''} class="w-10 h-10 rounded bg-gold/10 border border-gold text-gold hover:bg-gold hover:text-black disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-gold transition flex items-center justify-center" title="Add to Bag">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </button>
+                            <button onclick="orderDirectWhatsApp('${p.id}')" ${p.stock <= 0 ? 'disabled' : ''} class="w-10 h-10 rounded bg-emerald-600 text-white hover:bg-emerald-500 disabled:opacity-40 transition flex items-center justify-center" title="Order via WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- STREAMING_CHUNK:Rendering Shop View ---
+        function renderShopPage() {
+            const products = StoreAPI.getProducts();
+            const categories = StoreAPI.getCategories();
+            
+            // Extract unique brands for filtering
+            const brands = [...new Set(products.map(p => p.brand))];
+
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+                    <!-- Page Header -->
+                    <div class="text-center space-y-3">
+                        <span class="text-xs uppercase tracking-[0.3em] text-gold font-cinzel">Haute Parfumerie Catalog</span>
+                        <h1 class="text-4xl font-cinzel font-bold tracking-wider gold-gradient-text">Exquisite Fragrance Collection</h1>
+                        <p class="text-gray-400 text-sm max-w-xl mx-auto">
+                            Browse our complete inventory of rare essences and luxury perfumes. Order securely or contact us via WhatsApp for inquiries.
+                        </p>
+                    </div>
+
+                    <!-- Search & Filter Controls -->
+                    <div class="bg-cardBg border border-borderGold p-6 rounded-xl space-y-4 shadow-xl">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <!-- Search Input -->
+                            <div class="relative md:col-span-2">
+                                <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-gold"></i>
+                                <input type="text" id="shop-search" placeholder="Search by perfume name or brand..." class="w-full bg-black border border-gold/40 rounded-lg pl-11 pr-4 py-3 text-xs text-white focus:outline-none focus:border-gold font-cinzel">
+                            </div>
+
+                            <!-- Category Filter -->
+                            <div>
+                                <select id="shop-category-filter" class="w-full bg-black border border-gold/40 rounded-lg px-4 py-3 text-xs text-white focus:outline-none focus:border-gold font-cinzel">
+                                    <option value="">All Categories</option>
+                                    ${categories.map(c => `<option value="${c}">${c}</option>`).join('')}
+                                </select>
+                            </div>
+
+                            <!-- Sort By -->
+                            <div>
+                                <select id="shop-sort" class="w-full bg-black border border-gold/40 rounded-lg px-4 py-3 text-xs text-white focus:outline-none focus:border-gold font-cinzel">
+                                    <option value="newest">Sort by: Newest</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="name">Name: A to Z</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Filters (Brand & Price Range) -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-borderGold text-xs font-cinzel">
+                            <div class="flex items-center gap-3">
+                                <span class="text-gold">Brand:</span>
+                                <select id="shop-brand-filter" class="bg-black border border-gold/40 rounded px-3 py-1.5 text-white focus:outline-none focus:border-gold">
+                                    <option value="">All Brands</option>
+                                    ${brands.map(b => `<option value="${b}">${b}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gold">Availability:</span>
+                                <label class="flex items-center gap-1.5 text-gray-300 cursor-pointer">
+                                    <input type="checkbox" id="shop-in-stock-only" class="accent-gold"> In Stock Only
+                                </label>
+                            </div>
+                            <div>
+                                <button onclick="resetShopFilters()" class="text-gold hover:text-gold-light underline">Reset Filters</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid Container -->
+                    <div id="shop-products-grid">
+                        <!-- Dynamically rendered via JS -->
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterByCategory(cat) {
+            const select = document.getElementById('shop-category-filter');
+            if (select) {
+                select.value = cat;
+                triggerShopFilter();
+            }
+        }
+
+        function resetShopFilters() {
+            document.getElementById('shop-search').value = '';
+            document.getElementById('shop-category-filter').value = '';
+            document.getElementById('shop-brand-filter').value = '';
+            document.getElementById('shop-sort').value = 'newest';
+            document.getElementById('shop-in-stock-only').checked = false;
+            triggerShopFilter();
+        }
+
+        function triggerShopFilter() {
+            const searchTerm = (document.getElementById('shop-search')?.value || '').toLowerCase();
+            const categoryFilter = document.getElementById('shop-category-filter')?.value || '';
+            const brandFilter = document.getElementById('shop-brand-filter')?.value || '';
+            const sortBy = document.getElementById('shop-sort')?.value || 'newest';
+            const inStockOnly = document.getElementById('shop-in-stock-only')?.checked || false;
+
+            let products = StoreAPI.getProducts().filter(p => p.isPublished);
+
+            // Search filter
+            if (searchTerm) {
+                products = products.filter(p => p.name.toLowerCase().includes(searchTerm) || p.brand.toLowerCase().includes(searchTerm) || (p.notes && p.notes.toLowerCase().includes(searchTerm)));
+            }
+
+            // Category filter
+            if (categoryFilter) {
+                products = products.filter(p => p.category === categoryFilter);
+            }
+
+            // Brand filter
+            if (brandFilter) {
+                products = products.filter(p => p.brand === brandFilter);
+            }
+
+            // In stock filter
+            if (inStockOnly) {
+                products = products.filter(p => p.stock > 0);
+            }
+
+            // Sorting
+            products.sort((a, b) => {
+                const priceA = a.discountPrice && a.discountPrice < a.price ? a.discountPrice : a.price;
+                const priceB = b.discountPrice && b.discountPrice < b.price ? b.discountPrice : b.price;
+                
+                if (sortBy === 'price-low') return priceA - priceB;
+                if (sortBy === 'price-high') return priceB - priceA;
+                if (sortBy === 'name') return a.name.localeCompare(b.name);
+                // newest
+                return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+            });
+
+            const grid = document.getElementById('shop-products-grid');
+            if (!grid) return;
+
+            if (products.length === 0) {
+                grid.innerHTML = `
+                    <div class="bg-cardBg border border-borderGold rounded-xl p-16 text-center space-y-6">
+                        <div class="w-20 h-20 mx-auto rounded-full bg-black border border-gold/30 flex items-center justify-center text-gold text-3xl">
+                            <i class="fa-solid fa-spray-can"></i>
+                        </div>
+                        <h3 class="font-cinzel text-2xl text-white font-semibold">No perfumes available yet. New fragrances are coming soon.</h3>
+                        <p class="text-gray-400 text-sm max-w-md mx-auto">
+                            We are constantly curating rare and luxury essences. Check back shortly or add products to the catalog using the Admin Portal.
+                        </p>
+                        <button onclick="resetShopFilters()" class="px-6 py-3 bg-gold text-black font-cinzel font-bold text-xs tracking-wider rounded hover:bg-gold-light transition">
+                            Clear Filters
+                        </button>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = `
+                    <div class="text-xs font-cinzel text-gold mb-4">Showing ${products.length} luxury fragrance(s)</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        ${products.map(p => renderProductCard(p)).join('')}
+                    </div>
+                `;
+            }
+        }
+
+        function initShopEvents() {
+            triggerShopFilter();
+            document.getElementById('shop-search')?.addEventListener('input', triggerShopFilter);
+            document.getElementById('shop-category-filter')?.addEventListener('change', triggerShopFilter);
+            document.getElementById('shop-brand-filter')?.addEventListener('change', triggerShopFilter);
+            document.getElementById('shop-sort')?.addEventListener('change', triggerShopFilter);
+            document.getElementById('shop-in-stock-only')?.addEventListener('change', triggerShopFilter);
+        }
+
+        // --- STREAMING_CHUNK:Rendering Product Details View ---
+        function renderProductDetailPage(productId) {
+            const products = StoreAPI.getProducts();
+            const product = products.find(p => p.id === productId);
+
+            if (!product) {
+                return `
+                    <div class="max-w-4xl mx-auto px-4 py-24 text-center space-y-6">
+                        <h2 class="text-3xl font-cinzel font-bold text-white">Fragrance Not Found</h2>
+                        <p class="text-gray-400 text-sm">The requested perfume could not be located in our boutique catalog.</p>
+                        <button onclick="router.navigate('shop')" class="px-8 py-3 bg-gold text-black font-cinzel font-bold text-xs tracking-widest rounded">
+                            Return to Collection
+                        </button>
+                    </div>
+                `;
+            }
+
+            const hasDiscount = product.discountPrice && product.discountPrice < product.price;
+            const displayPrice = hasDiscount ? product.discountPrice : product.price;
+
+            // Related products (same category or brand, excluding current)
+            const related = products.filter(p => p.id !== product.id && p.isPublished && (p.category === product.category || p.brand === product.brand)).slice(0, 4);
+
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+                    <!-- Breadcrumbs -->
+                    <div class="flex items-center gap-2 text-xs font-cinzel text-gray-400">
+                        <button onclick="router.navigate('home')" class="hover:text-gold">Home</button>
+                        <span>/</span>
+                        <button onclick="router.navigate('shop')" class="hover:text-gold">Collection</button>
+                        <span>/</span>
+                        <span class="text-gold">${product.name}</span>
+                    </div>
+
+                    <!-- Main Product Section -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <!-- Image Gallery -->
+                        <div class="space-y-4">
+                            <div class="bg-cardBg border border-borderGold rounded-2xl overflow-hidden shadow-2xl h-[450px] sm:h-[550px] relative">
+                                <img src="${product.imageUrl}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x600/141414/D4AF37?text=ELY+PERFUME'">
+                                ${hasDiscount ? '<span class="absolute top-4 left-4 bg-red-600 text-white text-xs font-cinzel font-bold px-3 py-1 rounded">SPECIAL OFFER</span>' : ''}
+                            </div>
+                        </div>
+
+                        <!-- Product Info & Purchase -->
+                        <div class="space-y-6">
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs uppercase tracking-[0.2em] text-gold font-cinzel font-semibold">${product.brand}</span>
+                                    <span class="bg-black border border-gold/40 text-gold text-xs font-cinzel px-3 py-1 rounded-full">${product.category}</span>
+                                </div>
+                                <h1 class="text-3xl sm:text-4xl font-cinzel font-bold text-white">${product.name}</h1>
+                            </div>
+
+                            <!-- Pricing -->
+                            <div class="flex items-baseline gap-4 py-2 border-y border-borderGold">
+                                <span class="text-3xl font-cinzel font-bold text-gold">$${displayPrice.toFixed(2)}</span>
+                                ${hasDiscount ? `<span class="text-lg text-gray-500 line-through">$${product.price.toFixed(2)}</span>` : ''}
+                                <span class="text-xs font-cinzel text-gray-400 ml-auto">Bottle Size: <strong class="text-gold">${product.size} ml</strong></span>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="space-y-2">
+                                <h4 class="text-xs font-cinzel text-gold uppercase tracking-wider">Fragrance Profile & Description</h4>
+                                <p class="text-gray-300 text-sm leading-relaxed">${product.description}</p>
+                            </div>
+
+                            ${product.notes ? `
+                                <div class="space-y-2 bg-cardBg border border-borderGold/60 p-4 rounded-xl">
+                                    <h4 class="text-xs font-cinzel text-gold uppercase tracking-wider"><i class="fa-solid fa-fire-flame-curved mr-1"></i> Fragrance Notes</h4>
+                                    <p class="text-gray-300 text-xs">${product.notes}</p>
+                                </div>
+                            ` : ''}
+
+                            <!-- Stock Status -->
+                            <div class="flex items-center gap-2 text-xs font-cinzel">
+                                <i class="fa-solid fa-circle ${product.stock > 0 ? 'text-emerald-400' : 'text-red-400'}"></i>
+                                <span class="${product.stock > 0 ? 'text-emerald-400' : 'text-red-400'} font-semibold">
+                                    ${product.stock > 0 ? `In Stock (${product.stock} units available)` : 'Currently Out of Stock'}
+                                </span>
+                            </div>
+
+                            <!-- Quantity Selector & Actions -->
+                            ${product.stock > 0 ? `
+                                <div class="space-y-4 pt-4">
+                                    <div class="flex items-center gap-4">
+                                        <span class="text-xs font-cinzel text-gray-300 uppercase">Quantity:</span>
+                                        <div class="flex items-center border border-gold/40 rounded bg-black">
+                                            <button onclick="decrementDetailQty()" class="px-3 py-1.5 text-gold hover:bg-gold/10 transition">-</button>
+                                            <input type="number" id="detail-qty" value="1" min="1" max="${product.stock}" class="w-12 bg-transparent text-center text-white text-xs font-cinzel focus:outline-none" readonly>
+                                            <button onclick="incrementDetailQty(${product.stock})" class="px-3 py-1.5 text-gold hover:bg-gold/10 transition">+</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <button onclick="addToCartWithQty('${product.id}')" class="px-6 py-4 bg-gold/10 border border-gold text-gold font-cinzel font-bold text-xs tracking-widest rounded hover:bg-gold hover:text-black transition duration-300 flex items-center justify-center gap-2">
+                                            <i class="fa-solid fa-bag-shopping"></i> ADD TO BAG
+                                        </button>
+                                        <button onclick="orderDirectWhatsAppWithQty('${product.id}')" class="px-6 py-4 bg-emerald-600 text-white font-cinzel font-bold text-xs tracking-widest rounded hover:bg-emerald-500 transition duration-300 flex items-center justify-center gap-2">
+                                            <i class="fa-brands fa-whatsapp text-lg"></i> ORDER VIA WHATSAPP
+                                        </button>
+                                    </div>
+                                </div>
+                            ` : `
+                                <div class="p-4 bg-red-950/30 border border-red-500/40 rounded-xl text-center text-red-300 text-xs font-cinzel">
+                                    This item is temporarily out of stock. Contact us on WhatsApp to check restocking schedules.
+                                </div>
+                            `}
+                        </div>
+                    </div>
+
+                    <!-- Related Products -->
+                    ${related.length > 0 ? `
+                        <div class="space-y-8 pt-12 border-t border-borderGold">
+                            <div class="text-center space-y-2">
+                                <span class="text-xs uppercase tracking-[0.2em] text-gold font-cinzel">Complementary Notes</span>
+                                <h2 class="text-2xl font-cinzel font-bold text-white">You May Also Admire</h2>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                ${related.map(p => renderProductCard(p)).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function incrementDetailQty(max) {
+            const input = document.getElementById('detail-qty');
+            let val = parseInt(input.value) || 1;
+            if (val < max) {
+                input.value = val + 1;
+            }
+        }
+
+        function decrementDetailQty() {
+            const input = document.getElementById('detail-qty');
+            let val = parseInt(input.value) || 1;
+            if (val > 1) {
+                input.value = val - 1;
+            }
+        }
+
+        function addToCartWithQty(productId) {
+            const qty = parseInt(document.getElementById('detail-qty')?.value) || 1;
+            addToCart(productId, qty);
+        }
+
+        function orderDirectWhatsAppWithQty(productId) {
+            const qty = parseInt(document.getElementById('detail-qty')?.value) || 1;
+            const products = StoreAPI.getProducts();
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const unitPrice = product.discountPrice && product.discountPrice < product.price ? product.discountPrice : product.price;
+            const lineTotal = unitPrice * qty;
+            const settings = StoreAPI.getSettings();
+
+            const message = `ELY PERFUME — DIRECT INQUIRY\n\n` +
+                `Product: ${product.name}\n` +
+                `Brand: ${product.brand}\n` +
+                `Size: ${product.size}ml\n` +
+                `Quantity: ${qty}\n` +
+                `Unit Price: $${unitPrice.toFixed(2)}\n` +
+                `Line Total: $${lineTotal.toFixed(2)}\n\n` +
+                `Please confirm availability for delivery in Lebanon.`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/96181099418?text=${encoded}`, '_blank');
+        }
+
+        function initProductDetailEvents() {}
+
+        // --- CART LOGIC ---
+        function addToCart(productId, quantity = 1) {
+            const products = StoreAPI.getProducts();
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            if (product.stock <= 0) {
+                showToast('This product is currently out of stock.', 'error');
+                return;
+            }
+
+            let cart = StoreAPI.getCart();
+            const existingIndex = cart.findIndex(item => item.productId === productId);
+
+            if (existingIndex > -1) {
+                const newQty = cart[existingIndex].quantity + quantity;
+                if (newQty > product.stock) {
+                    showToast(`Cannot add more. Only ${product.stock} units available in stock.`, 'error');
+                    cart[existingIndex].quantity = product.stock;
+                } else {
+                    cart[existingIndex].quantity = newQty;
+                    showToast(`Added ${quantity} more of ${product.name} to your bag.`);
+                }
+            } else {
+                if (quantity > product.stock) {
+                    showToast(`Only ${product.stock} units available in stock.`, 'error');
+                    quantity = product.stock;
+                }
+                cart.push({
+                    productId: product.id,
+                    name: product.name,
+                    brand: product.brand,
+                    size: product.size,
+                    price: product.discountPrice && product.discountPrice < product.price ? product.discountPrice : product.price,
+                    imageUrl: product.imageUrl,
+                    quantity: quantity,
+                    maxStock: product.stock
+                });
+                showToast(`Successfully added ${product.name} to your bag.`);
+            }
+
+            StoreAPI.saveCart(cart);
+        }
+
+        function updateCartQuantity(productId, newQty) {
+            let cart = StoreAPI.getCart();
+            const item = cart.find(i => i.productId === productId);
+            if (!item) return;
+
+            if (newQty <= 0) {
+                removeFromCart(productId);
+                return;
+            }
+
+            if (newQty > item.maxStock) {
+                showToast(`Maximum available stock is ${item.maxStock}.`, 'error');
+                item.quantity = item.maxStock;
+            } else {
+                item.quantity = newQty;
+            }
+
+            StoreAPI.saveCart(cart);
+            router.render();
+        }
+
+        function removeFromCart(productId) {
+            let cart = StoreAPI.getCart();
+            cart = cart.filter(i => i.productId !== productId);
+            StoreAPI.saveCart(cart);
+            showToast('Item removed from shopping bag.');
+            router.render();
+        }
+
+        // --- STREAMING_CHUNK:Rendering Shopping Cart View ---
+        function renderCartPage() {
+            const cart = StoreAPI.getCart();
+            const settings = StoreAPI.getSettings();
+
+            if (cart.length === 0) {
+                return `
+                    <div class="max-w-4xl mx-auto px-4 py-20 text-center space-y-6">
+                        <div class="w-24 h-24 mx-auto rounded-full bg-cardBg border border-gold/40 flex items-center justify-center text-gold text-4xl shadow-xl">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                        <h2 class="text-3xl font-cinzel font-bold text-white">Your Shopping Bag is Empty</h2>
+                        <p class="text-gray-400 text-sm max-w-md mx-auto">
+                            Explore our exquisite collection of luxury perfumes and add your signature fragrance to begin.
+                        </p>
+                        <button onclick="router.navigate('shop')" class="px-8 py-3.5 bg-gold text-black font-cinzel font-bold text-xs tracking-widest rounded shadow-lg hover:bg-gold-light transition">
+                            EXPLORE COLLECTION
+                        </button>
+                    </div>
+                `;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryFee = settings.deliveryFee;
+            const grandTotal = subtotal + deliveryFee;
+
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+                    <div class="text-center space-y-2">
+                        <span class="text-xs uppercase tracking-[0.3em] text-gold font-cinzel">Boutique Bag</span>
+                        <h1 class="text-4xl font-cinzel font-bold tracking-wider gold-gradient-text">Your Shopping Bag</h1>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Items List -->
+                        <div class="lg:col-span-2 space-y-4">
+                            ${cart.map(item => `
+                                class="bg-cardBg border border-borderGold p-4 rounded-xl flex flex-col sm:flex-row items-center gap-4 shadow-lg">
+                                <div class="w-24 h-24 bg-black rounded-lg overflow-hidden flex-shrink-0 border border-gold/30">
+                                    <img src="${item.imageUrl}" alt="${item.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/141414/D4AF37?text=ELY'">
+                                </div>
+                                <div class="flex-grow space-y-1 text-center sm:text-left">
+                                    <span class="text-[10px] uppercase font-cinzel text-gold">${item.brand} • ${item.size}ml</span>
+                                    <h3 class="font-cinzel font-bold text-white text-base">${item.name}</h3>
+                                    <div class="text-gold font-cinzel text-sm font-semibold">$${item.price.toFixed(2)} each</div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center border border-gold/40 rounded bg-black">
+                                        <button onclick="updateCartQuantity('${item.productId}', ${item.quantity - 1})" class="px-2.5 py-1 text-gold hover:bg-gold/10 transition">-</button>
+                                        <span class="w-8 text-center text-white text-xs font-cinzel">${item.quantity}</span>
+                                        <button onclick="updateCartQuantity('${item.productId}', ${item.quantity + 1})" class="px-2.5 py-1 text-gold hover:bg-gold/10 transition">+</button>
+                                    </div>
+                                    <button onclick="removeFromCart('${item.productId}')" class="text-red-400 hover:text-red-300 p-2 transition" title="Remove item">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            `).join('')}
+
+                            <div class="flex justify-between items-center pt-4">
+                                <button onclick="router.navigate('shop')" class="text-xs font-cinzel text-gold hover:text-gold-light flex items-center gap-1">
+                                    <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+                                </button>
+                                <button onclick="StoreAPI.saveCart([]); router.render(); showToast('Shopping bag cleared.');" class="text-xs font-cinzel text-red-400 hover:text-red-300">
+                                    Clear Bag
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Order Summary Box -->
+                        <div class="bg-cardBg border border-borderGold p-6 rounded-xl space-y-6 shadow-xl h-fit font-cinzel">
+                            <h3 class="text-lg font-bold text-white border-b border-borderGold pb-3">Order Summary</h3>
+                            
+                            <div class="space-y-3 text-xs">
+                                <div class="flex justify-between text-gray-300">
+                                    <span>Subtotal</span>
+                                    <span class="font-bold text-white">$${subtotal.toFixed(2)}</span>
+                                </div>
+                                <div class="flex justify-between text-gray-300">
+                                    <span>Estimated Delivery (Lebanon)</span>
+                                    <span class="font-bold text-white">$${deliveryFee.toFixed(2)}</span>
+                                </div>
+                                <div class="border-t border-borderGold pt-3 flex justify-between text-sm font-bold text-gold">
+                                    <span>Grand Total</span>
+                                    <span>$${grandTotal.toFixed(2)}</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 pt-2">
+                                <button onclick="router.navigate('checkout')" class="w-full py-4 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-black font-bold text-xs tracking-widest rounded shadow-lg hover:scale-[1.02] transition duration-300 flex items-center justify-center gap-2">
+                                    PROCEED TO CHECKOUT <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <div class="text-[10px] text-gray-400 text-center leading-relaxed">
+                                    Secure WhatsApp order confirmation with +961 81 099 418.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function initCartEvents() {}
+
+        // --- STREAMING_CHUNK:Rendering Checkout View ---
+        function renderCheckoutPage() {
+            const cart = StoreAPI.getCart();
+            const settings = StoreAPI.getSettings();
+
+            if (cart.length === 0) {
+                setTimeout(() => router.navigate('shop'), 100);
+                return '';
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryFee = settings.deliveryFee;
+            const grandTotal = subtotal + deliveryFee;
+
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+                    <div class="text-center space-y-2">
+                        <span class="text-xs uppercase tracking-[0.3em] text-gold font-cinzel">Secure Checkout</span>
+                        <h1 class="text-4xl font-cinzel font-bold tracking-wider gold-gradient-text">Complete Your Order</h1>
+                        <p class="text-gray-400 text-xs">Orders are confirmed instantly via direct WhatsApp transmission with +961 81 099 418.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Customer Information Form -->
+                        <div class="lg:col-span-2 bg-cardBg border border-borderGold p-8 rounded-xl space-y-6 shadow-xl">
+                            <h3 class="font-cinzel font-bold text-lg text-white border-b border-borderGold pb-3">Delivery & Contact Information</h3>
+                            
+                            <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" class="space-y-4 font-cinzel text-xs">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="space-y-1.5">
+                                        <label class="text-gold">Full Name *</label>
+                                        <input type="text" id="chk-name" required placeholder="e.g. Yasmina Khoury" class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-gold">Phone Number (WhatsApp) *</label>
+                                        <input type="tel" id="chk-phone" required placeholder="e.g. +961 70 123 456" class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="space-y-1.5">
+                                        <label class="text-gold">City / Region *</label>
+                                        <select id="chk-city" required class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                            <option value="">Select Delivery City</option>
+                                            <option value="Beirut">Beirut</option>
+                                            <option value="Mount Lebanon">Mount Lebanon</option>
+                                            <option value="Tripoli">Tripoli</option>
+                                            <option value="Saida">Saida</option>
+                                            <option value="Jounieh">Jounieh</option>
+                                            <option value="Zahle / Bekaa">Zahle / Bekaa</option>
+                                            <option value="Other Lebanese Area">Other Lebanese Area</option>
+                                        </select>
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-gold">Area / Neighborhood *</label>
+                                        <input type="text" id="chk-area" required placeholder="e.g. Achrafieh, Verdun, Hamra" class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                    </div>
+                                </div>
+
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Complete Street Address *</label>
+                                    <input type="text" id="chk-address" required placeholder="Building name, Floor, Street" class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                </div>
+
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Optional Order Notes</label>
+                                    <textarea id="chk-notes" rows="3" placeholder="Special delivery instructions or gift wrapping request..." class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold"></textarea>
+                                </div>
+
+                                <div class="p-4 bg-black border border-gold/30 rounded-lg space-y-2">
+                                    <div class="font-bold text-gold"><i class="fa-solid fa-circle-info mr-1"></i> Important Order Notice</div>
+                                    <p class="text-gray-400 font-sans leading-relaxed text-[11px]">
+                                        Clicking "Place Order via WhatsApp" will generate your official order message and open WhatsApp (+961 81 099 418). You must press <strong>Send</strong> in WhatsApp to complete your order transmission. The store team will review and confirm your order promptly.
+                                    </p>
+                                </div>
+
+                                <button type="submit" class="w-full py-4 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-sm tracking-widest rounded-lg shadow-xl hover:from-emerald-500 hover:to-emerald-400 transition duration-300 flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-xl"></i> PLACE ORDER VIA WHATSAPP (+961 81 099 418)
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Order Review Sidebar -->
+                        <div class="bg-cardBg border border-borderGold p-6 rounded-xl space-y-6 shadow-xl h-fit font-cinzel">
+                            <h3 class="text-lg font-bold text-white border-b border-borderGold pb-3">Order Review (${cart.length} items)</h3>
+                            
+                            <div class="space-y-4 max-h-80 overflow-y-auto pr-2">
+                                ${cart.map(item => `
+                                    <div class="flex items-center justify-between text-xs gap-3 border-b border-borderGold/50 pb-3">
+                                        <div>
+                                            <div class="font-bold text-white">${item.name} (${item.size}ml)</div>
+                                            <div class="text-gray-400">Qty: ${item.quantity} × $${item.price.toFixed(2)}</div>
+                                        </div>
+                                        <div class="font-bold text-gold">$${(item.price * item.quantity).toFixed(2)}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <div class="space-y-2 text-xs pt-2">
+                                <div class="flex justify-between text-gray-300">
+                                    <span>Subtotal</span>
+                                    <span class="font-bold text-white">$${subtotal.toFixed(2)}</span>
+                                </div>
+                                <div class="flex justify-between text-gray-300">
+                                    <span>Delivery Fee</span>
+                                    <span class="font-bold text-white">$${deliveryFee.toFixed(2)}</span>
+                                </div>
+                                <div class="border-t border-borderGold pt-3 flex justify-between text-sm font-bold text-gold">
+                                    <span>Grand Total</span>
+                                    <span>$${grandTotal.toFixed(2)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            const cart = StoreAPI.getCart();
+            if (cart.length === 0) return;
+
+            const name = document.getElementById('chk-name').value.trim();
+            const phone = document.getElementById('chk-phone').value.trim();
+            const city = document.getElementById('chk-city').value;
+            const area = document.getElementById('chk-area').value.trim();
+            const address = document.getElementById('chk-address').value.trim();
+            const notes = document.getElementById('chk-notes').value.trim() || 'None';
+
+            const settings = StoreAPI.getSettings();
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryFee = settings.deliveryFee;
+            const grandTotal = subtotal + deliveryFee;
+            const orderRef = 'ELY-' + Math.floor(100000 + Math.random() * 900000);
+
+            // Save order record to database/storage
+            const orders = StoreAPI.getOrders();
+            const newOrder = {
+                id: orderRef,
+                date: new Date().toISOString(),
+                customer: { name, phone, city, area, address, notes },
+                items: cart,
+                subtotal,
+                deliveryFee,
+                grandTotal,
+                status: 'Pending WhatsApp Confirmation'
+            };
+            orders.unshift(newOrder);
+            StoreAPI.saveOrders(orders);
+
+            // Build formatted WhatsApp message
+            let msg = `ELY PERFUME — NEW ORDER\n\n` +
+                `Order Reference: ${orderRef}\n\n` +
+                `Customer Name: ${name}\n` +
+                `Phone: ${phone}\n` +
+                `Delivery City/Area: ${city} - ${area}\n` +
+                `Delivery Address: ${address}\n\n` +
+                `ORDER ITEMS:\n`;
+
+            cart.forEach(item => {
+                msg += `- ${item.name} (${item.brand})\n` +
+                    `  Size: ${item.size}ml | Qty: ${item.quantity}\n` +
+                    `  Unit Price: $${item.price.toFixed(2)} | Line Total: $${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+
+            msg += `\nSubtotal: $${subtotal.toFixed(2)}\n` +
+                `Delivery Fee: $${deliveryFee.toFixed(2)}\n` +
+                `Grand Total: $${grandTotal.toFixed(2)}\n\n` +
+                `Customer Notes: ${notes}\n\n` +
+                `Thank you for choosing ELY PERFUME. Please send this message to confirm your order.`;
+
+            const encoded = encodeURIComponent(msg);
+            
+            // Clear cart
+            StoreAPI.saveCart([]);
+
+            // Open WhatsApp
+            window.open(`https://wa.me/96181099418?text=${encoded}`, '_blank');
+
+            // Render confirmation success view
+            const container = document.getElementById('app-view');
+            container.innerHTML = `
+                <div class="max-w-3xl mx-auto px-4 py-20 text-center space-y-6">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-emerald-950 border border-emerald-500 flex items-center justify-center text-emerald-400 text-3xl shadow-2xl animate-bounce">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-xs font-cinzel text-gold uppercase tracking-widest">Order Reference: ${orderRef}</span>
+                        <h1 class="text-3xl font-cinzel font-bold text-white">Order Prepared Successfully!</h1>
+                    </div>
+                    <p class="text-gray-300 text-sm max-w-lg mx-auto leading-relaxed font-sans">
+                        WhatsApp has been opened with your complete order details. Please press <strong>Send</strong> in WhatsApp to transmit your order to Ely Perfume (+961 81 099 418).
+                    </p>
+                    <div class="bg-cardBg border border-borderGold p-6 rounded-xl text-left space-y-3 max-w-md mx-auto font-cinzel text-xs">
+                        <div class="text-gold font-bold">Next Steps:</div>
+                        <ul class="list-disc pl-5 space-y-1.5 text-gray-400">
+                            <li>Verify the WhatsApp chat is open with +961 81 099 418.</li>
+                            <li>Tap the Send button.</li>
+                            <li>Our boutique team will confirm your delivery schedule immediately.</li>
+                        </ul>
+                    </div>
+                    <div class="flex justify-center gap-4 pt-4">
+                        <button onclick="router.navigate('home')" class="px-8 py-3.5 bg-gold text-black font-cinzel font-bold text-xs tracking-widest rounded shadow-lg hover:bg-gold-light transition">
+                            RETURN TO HOME
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function initCheckoutEvents() {}
+
+        // --- STREAMING_CHUNK:Rendering About Us & Contact Views ---
+        function renderAboutPage() {
+            const settings = StoreAPI.getSettings();
+            return `
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+                    <div class="text-center space-y-3">
+                        <span class="text-xs uppercase tracking-[0.3em] text-gold font-cinzel">Haute Parfumerie Heritage</span>
+                        <h1 class="text-4xl font-cinzel font-bold tracking-wider gold-gradient-text">About ELY PERFUME</h1>
+                    </div>
+
+                    <div class="bg-cardBg border border-borderGold p-8 sm:p-12 rounded-2xl space-y-8 shadow-2xl">
+                        <div class="w-32 h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gold-dark via-gold to-gold-light shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                            <div class="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
+                                <img src="image_8f9196.png" alt="ELY PERFUME" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
+                        <div class="space-y-6 text-gray-300 font-sans text-sm sm:text-base leading-relaxed text-center max-w-3xl mx-auto">
+                            <p>${settings.aboutText}</p>
+                            <p>
+                                Founded in the vibrant heart of Beirut, ELY PERFUME represents an uncompromising dedication to rare ingredients, magnificent sillage, and exquisite bottle craftsmanship. Every fragrance in our collection tells a distinct story of elegance and distinction.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-borderGold text-center font-cinzel">
+                            <div class="space-y-2">
+                                <div class="text-gold text-2xl"><i class="fa-solid fa-gem"></i></div>
+                                <h4 class="text-white font-bold text-sm">Pure Luxury</h4>
+                                <p class="text-xs text-gray-400">Crafted with the finest oils and essences.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="text-gold text-2xl"><i class="fa-solid fa-truck-fast"></i></div>
+                                <h4 class="text-white font-bold text-sm">Lebanon Delivery</h4>
+                                <p class="text-xs text-gray-400">Fast delivery across all Lebanese regions.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="text-gold text-2xl"><i class="fa-brands fa-whatsapp"></i></div>
+                                <h4 class="text-white font-bold text-sm">Direct Support</h4>
+                                <p class="text-xs text-gray-400">Instant assistance via +961 81 099 418.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderContactPage() {
+            const settings = StoreAPI.getSettings();
+            return `
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+                    <div class="text-center space-y-3">
+                        <span class="text-xs uppercase tracking-[0.3em] text-gold font-cinzel">Get in Touch</span>
+                        <h1 class="text-4xl font-cinzel font-bold tracking-wider gold-gradient-text">Contact Our Boutique</h1>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-cardBg border border-borderGold p-8 rounded-2xl space-y-6 shadow-xl font-cinzel">
+                            <h3 class="text-xl font-bold text-white border-b border-borderGold pb-3">Boutique Information</h3>
+                            <div class="space-y-4 text-xs text-gray-300">
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-location-dot text-gold text-base mt-1"></i>
+                                    <div>
+                                        <strong class="text-white block">Location:</strong>
+                                        Beirut, Lebanon
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-phone text-gold text-base mt-1"></i>
+                                    <div>
+                                        <strong class="text-white block">WhatsApp & Phone:</strong>
+                                        ${settings.whatsappNumber}
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fa-solid fa-clock text-gold text-base mt-1"></i>
+                                    <div>
+                                        <strong class="text-white block">Hours:</strong>
+                                        Monday – Saturday: 10:00 AM – 9:00 PM
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-4">
+                                <a href="https://wa.me/96181099418?text=Hello%20Ely%20Perfume,%20I%20would%20like%20to%20visit%20or%20inquire." target="_blank" class="w-full py-4 bg-emerald-600 text-white font-bold text-xs tracking-widest rounded-lg shadow-lg hover:bg-emerald-500 transition duration-300 flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> CHAT WITH US NOW
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-cardBg border border-borderGold p-8 rounded-2xl space-y-6 shadow-xl font-cinzel">
+                            <h3 class="text-xl font-bold text-white border-b border-borderGold pb-3">Send a Message</h3>
+                            <form onsubmit="handleContactSend(event)" class="space-y-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Your Name *</label>
+                                    <input type="text" id="contact-name" required placeholder="Full Name" class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Phone Number *</label>
+                                    <input type="tel" id="contact-phone" required placeholder="Phone / WhatsApp" class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Message / Inquiry *</label>
+                                    <textarea id="contact-msg" rows="4" required placeholder="Inquire about a fragrance or delivery..." class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-3.5 bg-gold text-black font-bold text-xs tracking-widest rounded hover:bg-gold-light transition duration-300">
+                                    SEND INQUIRY
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleContactSend(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const phone = document.getElementById('contact-phone').value;
+            const msg = document.getElementById('contact-msg').value;
+
+            const text = `ELY PERFUME INQUIRY\n\nName: ${name}\nPhone: ${phone}\nMessage: ${msg}`;
+            window.open(`https://wa.me/96181099418?text=${encodeURIComponent(text)}`, '_blank');
+            showToast('Inquiry prepared for WhatsApp transmission.');
+        }
+
+        function initContactEvents() {}
+
+        // --- STREAMING_CHUNK:Rendering Admin Dashboard View ---
+        let adminTab = 'products'; // 'products', 'orders', 'settings'
+
+        function renderAdminPage() {
+            const isAdminLoggedIn = sessionStorage.getItem('ely_admin_auth') === 'true';
+
+            if (!isAdminLoggedIn) {
+                return `
+                    <div class="max-w-md mx-auto px-4 py-24">
+                        <div class="bg-cardBg border border-borderGold p-8 rounded-2xl space-y-6 shadow-2xl font-cinzel">
+                            <div class="text-center space-y-2">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-black border border-gold flex items-center justify-center text-gold text-2xl">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-white">Admin Portal</h2>
+                                <p class="text-xs text-gray-400">Secure management for ELY PERFUME</p>
+                            </div>
+
+                            <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-xs">
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Administrator Username</label>
+                                    <input type="text" id="admin-user" required placeholder="admin" class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Password</label>
+                                    <input type="password" id="admin-pass" required placeholder="••••••••" class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                </div>
+
+                                <button type="submit" class="w-full py-3.5 bg-gold text-black font-bold text-xs tracking-widest rounded hover:bg-gold-light transition">
+                                    LOGIN TO PORTAL
+                                </button>
+
+                                <div class="p-3 bg-black/60 border border-gold/20 rounded text-[11px] text-gray-400 text-center space-y-1">
+                                    <div>Demo Credentials for Testing:</div>
+                                    <div class="text-gold font-bold">Username: <span class="text-white">admin</span> | Password: <span class="text-white">ely2026</span></div>
+                                    <button type="button" onclick="fillAdminDemo()" class="text-gold underline mt-1 block mx-auto">Fill Demo Credentials</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const products = StoreAPI.getProducts();
+            const orders = StoreAPI.getOrders();
+            const settings = StoreAPI.getSettings();
+
+            return `
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-borderGold pb-6">
+                        <div>
+                            <span class="text-xs uppercase tracking-[0.3em] text-gold font-cinzel">Management Control</span>
+                            <h1 class="text-3xl font-cinzel font-bold text-white">Admin Dashboard</h1>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="sessionStorage.removeItem('ely_admin_auth'); router.render(); showToast('Logged out of admin portal.');" class="px-4 py-2 border border-red-500/50 text-red-400 text-xs font-cinzel rounded hover:bg-red-950/40 transition">
+                                <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Admin Tabs Navigation -->
+                    <div class="flex flex-wrap gap-2 font-cinzel text-xs">
+                        <button onclick="setAdminTab('products')" class="px-6 py-3 rounded-lg border transition ${adminTab === 'products' ? 'bg-gold text-black font-bold border-gold shadow-lg' : 'bg-cardBg text-gray-300 border-borderGold hover:border-gold'}">
+                            <i class="fa-solid fa-spray-can-sparkles mr-2"></i> Products (${products.length})
+                        </button>
+                        <button onclick="setAdminTab('orders')" class="px-6 py-3 rounded-lg border transition ${adminTab === 'orders' ? 'bg-gold text-black font-bold border-gold shadow-lg' : 'bg-cardBg text-gray-300 border-borderGold hover:border-gold'}">
+                            <i class="fa-solid fa-receipt mr-2"></i> Orders (${orders.length})
+                        </button>
+                        <button onclick="setAdminTab('settings')" class="px-6 py-3 rounded-lg border transition ${adminTab === 'settings' ? 'bg-gold text-black font-bold border-gold shadow-lg' : 'bg-cardBg text-gray-300 border-borderGold hover:border-gold'}">
+                            <i class="fa-solid fa-gears mr-2"></i> Store Settings
+                        </button>
+                    </div>
+
+                    <!-- TAB 1: PRODUCTS MANAGEMENT -->
+                    ${adminTab === 'products' ? `
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-cinzel font-bold text-xl text-white">Product Catalog Management</h3>
+                                <button onclick="openProductModal()" class="px-5 py-2.5 bg-gold text-black font-cinzel font-bold text-xs tracking-wider rounded shadow hover:bg-gold-light transition flex items-center gap-2">
+                                    <i class="fa-solid fa-plus"></i> ADD NEW PERFUME
+                                </button>
+                            </div>
+
+                            ${products.length === 0 ? `
+                                <div class="bg-cardBg border border-borderGold rounded-xl p-12 text-center space-y-4">
+                                    <div class="w-16 h-16 mx-auto rounded-full bg-black border border-gold/30 flex items-center justify-center text-gold text-2xl">
+                                        <i class="fa-solid fa-spray-can"></i>
+                                    </div>
+                                    <h4 class="font-cinzel text-lg text-white font-semibold">Catalog is Empty</h4>
+                                    <p class="text-gray-400 text-sm max-w-md mx-auto">
+                                        No products have been added yet. Click "Add New Perfume" above to add your first real fragrance.
+                                    </p>
+                                    <button onclick="openProductModal()" class="px-6 py-2.5 bg-gold text-black font-cinzel font-bold text-xs rounded">
+                                        Add First Perfume
+                                    </button>
+                                </div>
+                            ` : `
+                                <div class="bg-cardBg border border-borderGold rounded-xl overflow-hidden shadow-xl">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full text-left border-collapse font-cinzel text-xs">
+                                            <thead>
+                                                <tr class="bg-black/80 text-gold border-b border-borderGold">
+                                                    <th class="p-4">Perfume</th>
+                                                    <th class="p-4">Brand / Category</th>
+                                                    <th class="p-4">Price ($)</th>
+                                                    <th class="p-4">Stock</th>
+                                                    <th class="p-4">Status</th>
+                                                    <th class="p-4 text-right">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-borderGold/50 text-gray-300">
+                                                ${products.map(p => `
+                                                    <tr class="hover:bg-black/30 transition">
+                                                        <td class="p-4 flex items-center gap-3">
+                                                            <div class="w-12 h-12 bg-black rounded border border-gold/30 overflow-hidden flex-shrink-0">
+                                                                <img src="${p.imageUrl}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/141414/D4AF37?text=ELY'">
+                                                            </div>
+                                                            <div>
+                                                                <div class="font-bold text-white">${p.name}</div>
+                                                                <div class="text-[10px] text-gold">${p.size}ml ${p.isFeatured ? '• Featured' : ''}</div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4">
+                                                            <div class="font-semibold text-white">${p.brand}</div>
+                                                            <div class="text-[10px] text-gray-400">${p.category}</div>
+                                                        </td>
+                                                        <td class="p-4">
+                                                            <div class="font-bold text-gold">$${p.price.toFixed(2)}</div>
+                                                            ${p.discountPrice ? `<div class="text-[10px] text-red-400 line-through">$${p.discountPrice.toFixed(2)}</div>` : ''}
+                                                        </td>
+                                                        <td class="p-4 font-bold ${p.stock > 0 ? 'text-emerald-400' : 'text-red-400'}">
+                                                            ${p.stock} units
+                                                        </td>
+                                                        <td class="p-4">
+                                                            <span class="px-2.5 py-1 rounded-full text-[10px] ${p.isPublished ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/40' : 'bg-red-950 text-red-400 border border-red-500/40'}">
+                                                                ${p.isPublished ? 'Published' : 'Draft'}
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 text-right space-x-2">
+                                                            <button onclick="editProduct('${p.id}')" class="px-3 py-1 bg-gold/10 border border-gold text-gold rounded hover:bg-gold hover:text-black transition" title="Edit">
+                                                                <i class="fa-solid fa-pen"></i>
+                                                            </button>
+                                                            <button onclick="deleteProduct('${p.id}')" class="px-3 py-1 bg-red-950/40 border border-red-500 text-red-400 rounded hover:bg-red-600 hover:text-white transition" title="Delete">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            `}
+                        </div>
+                    ` : ''}
+
+                    <!-- TAB 2: ORDERS MANAGEMENT -->
+                    ${adminTab === 'orders' ? `
+                        <div class="space-y-6">
+                            <h3 class="font-cinzel font-bold text-xl text-white">Customer Orders Record</h3>
+                            ${orders.length === 0 ? `
+                                <div class="bg-cardBg border border-borderGold rounded-xl p-12 text-center space-y-4 font-cinzel">
+                                    <div class="w-16 h-16 mx-auto rounded-full bg-black border border-gold/30 flex items-center justify-center text-gold text-2xl">
+                                        <i class="fa-solid fa-receipt"></i>
+                                    </div>
+                                    <h4 class="text-lg text-white font-semibold">No Orders Recorded Yet</h4>
+                                    <p class="text-gray-400 text-sm max-w-md mx-auto">
+                                        Orders placed through the checkout flow and transmitted via WhatsApp will be logged here.
+                                    </p>
+                                </div>
+                            ` : `
+                                <div class="space-y-4">
+                                    ${orders.map(o => `
+                                        class="bg-cardBg border border-borderGold p-6 rounded-xl space-y-4 font-cinzel shadow-xl">
+                                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-borderGold pb-3">
+                                            <div>
+                                                <span class="text-gold font-bold text-base">${o.id}</span>
+                                                <span class="text-xs text-gray-400 ml-3">${new Date(o.date).toLocaleString()}</span>
+                                            </div>
+                                            <span class="px-3 py-1 rounded-full text-xs bg-amber-950 text-amber-300 border border-amber-500/40">
+                                                ${o.status}
+                                            </span>
+                                        </div>
+
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-gray-300">
+                                            <div>
+                                                <strong class="text-gold block mb-1">Customer Details:</strong>
+                                                <div>Name: ${o.customer.name}</div>
+                                                <div>Phone: ${o.customer.phone}</div>
+                                                <div>Delivery: ${o.customer.city} - ${o.customer.area}</div>
+                                                <div>Address: ${o.customer.address}</div>
+                                                <div>Notes: ${o.customer.notes}</div>
+                                            </div>
+                                            <div>
+                                                <strong class="text-gold block mb-1">Order Items & Total:</strong>
+                                                <ul class="space-y-1">
+                                                    ${o.items.map(i => `<li>• ${i.name} (${i.size}ml) × ${i.quantity} = $${(i.price * i.quantity).toFixed(2)}</li>`).join('')}
+                                                </ul>
+                                                <div class="mt-2 pt-2 border-t border-borderGold font-bold text-gold text-sm flex justify-between">
+                                                    <span>Grand Total (incl. delivery):</span>
+                                                    <span>$${o.grandTotal.toFixed(2)}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    `).join('')}
+                                </div>
+                            `}
+                        </div>
+                    ` : ''}
+
+                    <!-- TAB 3: STORE SETTINGS -->
+                    ${adminTab === 'settings' ? `
+                        <div class="bg-cardBg border border-borderGold p-8 rounded-xl space-y-6 shadow-xl max-w-3xl">
+                            <h3 class="font-cinzel font-bold text-xl text-white border-b border-borderGold pb-3">Store Configuration & Policies</h3>
+                            
+                            <form onsubmit="handleSettingsSave(event)" class="space-y-4 font-cinzel text-xs">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="space-y-1.5">
+                                        <label class="text-gold">Store Name</label>
+                                        <input type="text" id="set-name" value="${settings.storeName}" required class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-gold">WhatsApp Number</label>
+                                        <input type="text" id="set-wa" value="${settings.whatsappNumber}" required class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="space-y-1.5">
+                                        <label class="text-gold">Currency</label>
+                                        <input type="text" id="set-currency" value="${settings.currency}" required class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label class="text-gold">Delivery Fee ($)</label>
+                                        <input type="number" step="0.5" id="set-fee" value="${settings.deliveryFee}" required class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">
+                                    </div>
+                                </div>
+
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">About Us / Home Intro Text</label>
+                                    <textarea id="set-about" rows="4" required class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">${settings.aboutText}</textarea>
+                                </div>
+
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Store Policies & Delivery Info</label>
+                                    <textarea id="set-policies" rows="3" required class="w-full bg-black border border-gold/40 rounded px-4 py-3 text-white focus:outline-none focus:border-gold">${settings.storePolicies}</textarea>
+                                </div>
+
+                                <button type="submit" class="px-8 py-3.5 bg-gold text-black font-bold tracking-widest rounded hover:bg-gold-light transition">
+                                    SAVE CONFIGURATION
+                                </button>
+                            </form>
+                        </div>
+                    ` : ''}
+                </div>
+
+                <!-- Product Modal (Add / Edit) -->
+                <div id="product-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+                    <div class="bg-cardBg border border-gold rounded-2xl p-8 max-w-2xl w-full space-y-6 shadow-2xl font-cinzel my-8">
+                        <div class="flex justify-between items-center border-b border-borderGold pb-3">
+                            <h3 id="modal-title" class="text-xl font-bold text-white">Add New Fragrance</h3>
+                            <button onclick="closeProductModal()" class="text-gray-400 hover:text-gold text-lg"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                        <form id="product-form" onsubmit="handleProductFormSubmit(event)" class="space-y-4 text-xs">
+                            <input type="hidden" id="prod-id">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Perfume Name *</label>
+                                    <input type="text" id="prod-name" required placeholder="e.g. Royal Amber Gold" class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Perfume Brand *</label>
+                                    <input type="text" id="prod-brand" required placeholder="e.g. ELY Private Blend" class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Category *</label>
+                                    <select id="prod-category" required class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                                        ${StoreAPI.getCategories().map(c => `<option value="${c}">${c}</option>`).join('')}
+                                    </select>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Bottle Size (ml) *</label>
+                                    <input type="number" id="prod-size" value="100" required class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Stock Quantity *</label>
+                                    <input type="number" id="prod-stock" value="10" required class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Price (USD) *</label>
+                                    <input type="number" step="0.01" id="prod-price" required placeholder="120.00" class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label class="text-gold">Discount Price (Optional USD)</label>
+                                    <input type="number" step="0.01" id="prod-discount" placeholder="99.00" class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                                </div>
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <label class="text-gold">Product Image URL *</label>
+                                <input type="url" id="prod-image" required placeholder="https://images.unsplash.com/... or image URL" class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                                <span class="text-[10px] text-gray-500">Provide a direct image URL or use Unsplash perfume photos.</span>
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <label class="text-gold">Product Description *</label>
+                                <textarea id="prod-desc" rows="3" required placeholder="Exquisite notes of saffron, amber, and rare woods..." class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold"></textarea>
+                            </div>
+
+                            <div class="space-y-1.5">
+                                <label class="text-gold">Fragrance Notes (Optional)</label>
+                                <input type="text" id="prod-notes" placeholder="Top: Bergamot, Heart: Rose, Base: Oud & Amber" class="w-full bg-black border border-gold/40 rounded px-4 py-2.5 text-white focus:outline-none focus:border-gold">
+                            </div>
+
+                            <div class="flex items-center gap-6 pt-2">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="prod-published" checked class="accent-gold"> Publish to Store
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="prod-featured" class="accent-gold"> Feature on Homepage
+                                </label>
+                            </div>
+
+                            <div class="flex justify-end gap-4 pt-4 border-t border-borderGold">
+                                <button type="button" onclick="closeProductModal()" class="px-6 py-2.5 border border-gold/40 text-gray-300 rounded hover:bg-gold/10">Cancel</button>
+                                <button type="submit" class="px-8 py-2.5 bg-gold text-black font-bold rounded shadow hover:bg-gold-light">Save Product</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+        }
+
+        function setAdminTab(tab) {
+            adminTab = tab;
+            router.render();
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('admin-user').value;
+            const p = document.getElementById('admin-pass').value;
+
+            if (u === 'admin' && p === 'ely2026') {
+                sessionStorage.setItem('ely_admin_auth', 'true');
+                showToast('Successfully logged into Admin Portal.');
+                router.render();
+            } else {
+                showToast('Invalid admin credentials. Use admin / ely2026', 'error');
+            }
+        }
+
+        function fillAdminDemo() {
+            document.getElementById('admin-user').value = 'admin';
+            document.getElementById('admin-pass').value = 'ely2026';
+        }
+
+        function openProductModal(product = null) {
+            const modal = document.getElementById('product-modal');
+            const title = document.getElementById('modal-title');
+            
+            document.getElementById('prod-id').value = product ? product.id : '';
+            document.getElementById('prod-name').value = product ? product.name : '';
+            document.getElementById('prod-brand').value = product ? product.brand : 'ELY PERFUME';
+            document.getElementById('prod-category').value = product ? product.category : StoreAPI.getCategories()[0];
+            document.getElementById('prod-size').value = product ? product.size : 100;
+            document.getElementById('prod-stock').value = product ? product.stock : 15;
+            document.getElementById('prod-price').value = product ? product.price : '';
+            document.getElementById('prod-discount').value = product && product.discountPrice ? product.discountPrice : '';
+            document.getElementById('prod-image').value = product ? product.imageUrl : '';
+            document.getElementById('prod-desc').value = product ? product.description : '';
+            document.getElementById('prod-notes').value = product ? product.notes : '';
+            document.getElementById('prod-published').checked = product ? product.isPublished : true;
+            document.getElementById('prod-featured').checked = product ? product.isFeatured : false;
+
+            title.innerText = product ? 'Edit Fragrance' : 'Add New Fragrance';
+            modal.classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function editProduct(id) {
+            const products = StoreAPI.getProducts();
+            const product = products.find(p => p.id === id);
+            if (product) {
+                openProductModal(product);
+            }
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Are you sure you want to delete this perfume from the catalog?')) {
+                let products = StoreAPI.getProducts();
+                products = products.filter(p => p.id !== id);
+                StoreAPI.saveProducts(products);
+                showToast('Product successfully deleted.');
+                router.render();
+            }
+        }
+
+        function handleProductFormSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('prod-id').value || 'ELY-' + Date.now();
+            const name = document.getElementById('prod-name').value.trim();
+            const brand = document.getElementById('prod-brand').value.trim();
+            const category = document.getElementById('prod-category').value;
+            const size = parseInt(document.getElementById('prod-size').value);
+            const stock = parseInt(document.getElementById('prod-stock').value);
+            const price = parseFloat(document.getElementById('prod-price').value);
+            const discountPrice = document.getElementById('prod-discount').value ? parseFloat(document.getElementById('prod-discount').value) : null;
+            const imageUrl = document.getElementById('prod-image').value.trim();
+            const description = document.getElementById('prod-desc').value.trim();
+            const notes = document.getElementById('prod-notes').value.trim();
+            const isPublished = document.getElementById('prod-published').checked;
+            const isFeatured = document.getElementById('prod-featured').checked;
+
+            let products = StoreAPI.getProducts();
+            const existingIndex = products.findIndex(p => p.id === id);
+
+            const productData = {
+                id,
+                name,
+                brand,
+                category,
+                size,
+                stock,
+                price,
+                discountPrice,
+                imageUrl,
+                description,
+                notes,
+                isPublished,
+                isFeatured,
+                createdAt: existingIndex > -1 ? products[existingIndex].createdAt : new Date().toISOString()
+            };
+
+            if (existingIndex > -1) {
+                products[existingIndex] = productData;
+                showToast('Fragrance updated successfully.');
+            } else {
+                products.unshift(productData);
+                showToast('New fragrance added to catalog successfully.');
+            }
+
+            StoreAPI.saveProducts(products);
+            closeProductModal();
+            router.render();
+        }
+
+        function handleSettingsSave(e) {
+            e.preventDefault();
+            const settings = {
+                storeName: document.getElementById('set-name').value,
+                whatsappNumber: document.getElementById('set-wa').value,
+                currency: document.getElementById('set-currency').value,
+                deliveryFee: parseFloat(document.getElementById('set-fee').value),
+                deliveryAreas: "Beirut, Mount Lebanon, Tripoli, Saida, Bekaa, All Lebanese Regions",
+                aboutText: document.getElementById('set-about').value,
+                contactInfo: "Visit our boutique or connect via WhatsApp.",
+                storePolicies: document.getElementById('set-policies').value
+            };
+            StoreAPI.saveSettings(settings);
+            showToast('Store configuration saved successfully.');
+        }
+
+        function initAdminEvents() {}
+
+        // --- DIRECT WHATSAPP ORDER HELPER FOR PRODUCT CARDS ---
+        function orderDirectWhatsApp(productId) {
+            const products = StoreAPI.getProducts();
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const price = product.discountPrice && product.discountPrice < product.price ? product.discountPrice : product.price;
+            const message = `ELY PERFUME — DIRECT INQUIRY\n\n` +
+                `Product: ${product.name}\n` +
+                `Brand: ${product.brand}\n` +
+                `Size: ${product.size}ml\n` +
+                `Price: $${price.toFixed(2)}\n\n` +
+                `Please confirm availability for delivery in Lebanon.`;
+
+            window.open(`https://wa.me/96181099418?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById('newsletter-email').value;
+            if (email) {
+                showToast('Thank you for subscribing to ELY PERFUME inner circle.');
+                document.getElementById('newsletter-email').value = '';
+            } else {
+                showToast('Please enter a valid email address.', 'error');
+            }
+        }
+
+        // --- SUPABASE & BACKEND SCHEMA DOCUMENTATION (FOR DEVELOPER REFERENCE) ---
+        /*
+        -- =========================================================================
+        -- SUPABASE POSTGRESQL DATABASE SCHEMA FOR ELY PERFUME
+        -- =========================================================================
+
+        CREATE TABLE store_settings (
+            id SERIAL PRIMARY KEY,
+            store_name TEXT NOT NULL DEFAULT 'ELY PERFUME',
+            whatsapp_number TEXT NOT NULL DEFAULT '+96181099418',
+            currency TEXT NOT NULL DEFAULT 'USD',
+            delivery_fee NUMERIC(10,2) NOT NULL DEFAULT 5.00,
+            about_text TEXT,
+            store_policies TEXT,
+            updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+        );
+
+        CREATE TABLE categories (
+            id SERIAL PRIMARY KEY,
+            name TEXT UNIQUE NOT NULL
+        );
+
+        CREATE TABLE products (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            name TEXT NOT NULL,
+            brand TEXT NOT NULL,
+            category TEXT NOT NULL,
+            size INTEGER NOT NULL,
+            price NUMERIC(10,2) NOT NULL,
+            discount_price NUMERIC(10,2),
+            image_url TEXT NOT NULL,
+            description TEXT NOT NULL,
+            notes TEXT,
+            stock INTEGER NOT NULL DEFAULT 0,
+            is_published BOOLEAN DEFAULT TRUE,
+            is_featured BOOLEAN DEFAULT FALSE,
+            created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+        );
+
+        CREATE TABLE orders (
+            id TEXT PRIMARY KEY,
+            customer_name TEXT NOT NULL,
+            phone TEXT NOT NULL,
+            city TEXT NOT NULL,
+            area TEXT NOT NULL,
+            address TEXT NOT NULL,
+            notes TEXT,
+            subtotal NUMERIC(10,2) NOT NULL,
+            delivery_fee NUMERIC(10,2) NOT NULL,
+            grand_total NUMERIC(10,2) NOT NULL,
+            status TEXT DEFAULT 'Pending WhatsApp Confirmation',
+            created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+        );
+
+        CREATE TABLE order_items (
+            id SERIAL PRIMARY KEY,
+            order_id TEXT REFERENCES orders(id) ON DELETE CASCADE,
+            product_name TEXT NOT NULL,
+            size INTEGER NOT NULL,
+            quantity INTEGER NOT NULL,
+            unit_price NUMERIC(10,2) NOT NULL
+        );
+
+        -- ROW LEVEL SECURITY (RLS) POLICIES
+        ALTER TABLE products ENABLE ROW LEVEL SECURITY;
+        ALTER TABLE store_settings ENABLE ROW LEVEL SECURITY;
+        ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
+
+        -- Public read access for published products & settings
+        CREATE POLICY "Public Read Published Products" ON products FOR SELECT USING (is_published = true);
+        CREATE POLICY "Public Read Settings" ON store_settings FOR SELECT USING (true);
+
+        -- Admin write access (authenticated admin role)
+        CREATE POLICY "Admin All Products" ON products USING (auth.role() = 'authenticated');
+        CREATE POLICY "Admin All Settings" ON store_settings USING (auth.role() = 'authenticated');
+        CREATE POLICY "Admin All Orders" ON orders USING (auth.role() = 'authenticated');
+        */
+
+        // --- INITIAL RENDER ON LOAD ---
+        window.onload = function() {
+            router.navigate('home');
+            updateCartBadge();
+        };
+    </script>
+</body>
+</html>
